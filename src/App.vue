@@ -1,78 +1,79 @@
 <template>
-  <div id="app" class="container-fluid">
+  <div id="app" class="container-fluid procon-list">
     <h1 class="text-center">Pro/Con List</h1>
     <div class="row">
       <div class="col-md-offset-3 col-md-6">
         <div class="form-group">
-          <textarea class="form-control" placeholder="Enter a pro/con" rows="1"></textarea>
+          <input class="form-control"  placeholder="Enter a pro/con" v-model="input" @keyup.enter="processItem"></input>
         </div>
       </div>
     </div>
+
     <div class="row">
-      <div class="col-sm-6 col-md-6" style="background-color:greenyellow">
-        <p class="list-title">PROS</p>
-        <div class="row">
-          <div class="col-md-offset-3 col-md-6">
-            <ul class="procon-list pro-list">
-              <li>something</li>
-            </ul>
-          </div>
-        </div>
+      <div class="col-xs-6" style="background-color:greenyellow">
+        <pro-con-list :items="pros" title="PROS" :is-pro-list="true"></pro-con-list>
       </div>
-      <div class="col-sm-6 col-md-6" style="background-color:gold">
-        <p class="list-title">CONS</p>
-        <div class="row">
-          <div class="col-md-offset-3 col-md-6">
-            <ul class="procon-list con-list">
-              <li>something</li>
-              <li>something</li>
-              <li>something</li>
-            </ul>
-          </div>
-        </div>
+      
+      <div class="col-xs-6" style="background-color:gold">
+        <pro-con-list :items="cons" title="CONS" :is-pro-list="false"></pro-con-list>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ProConList from './ProConList.vue'
+
 export default {
   name: 'app',
+  components: {
+    ProConList,
+  },
   data () {
     return {
+      input: '',
+      items: [],
     }
-  }
+  },
+  computed: {
+    pros: function() {
+      return this.items.filter( item => item.pro === true);
+    },
+    cons: function() {
+      return this.items.filter( item => item.con === true);
+    }
+  },
+  methods: {
+    processItem: function(event) {
+      // check to see if it has one of our keys
+      let indicator = this.input.trim().substring(0, 1);
+
+      let item = {};
+
+      switch (indicator) {
+        case "+":
+          item.pro = true;
+          break;
+        case "-":
+          item.con = true;
+          break;
+        default:
+          return;
+      }
+
+      item.value = this.input.trim().substring(1).trim();
+
+      this.items.push(item);
+
+      // clear out the input
+      this.input = '';
+    }
+  },
 }
 </script>
 
 <style scoped>
   #app {
     background-color: lightblue;
-  }
-
-  .full-width {
-    width: 100%;
-  }
-
-  .list-title {
-    text-align: center;
-    font-weight: bold;
-  }
-
-  .procon-list {
-    list-style: none; /* Remove list bullets */
-  }
-
-  ul.con-list li:before, ul.pro-list li:before {
-    padding-right: 1em;
-    font-family: FontAwesome;
-  }
-
-  ul.pro-list li:before {
-    content: "\f067";
-  }
-
-  ul.con-list li:before {
-    content: "\f068";
   }
 </style>
