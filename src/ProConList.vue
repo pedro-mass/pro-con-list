@@ -20,16 +20,36 @@
   ul.con-list li:before {
     content: "\f068";
   }
+
+  li .listItem-actions {
+      /*display: none*/
+  }
+
+  li:hover .listItem-actions {
+      display: inherit;
+  }
+
+  .listItem-actions a:hover {
+    font-size: 1.25rem;
+  }
 </style>
 
 <template>
   <div>
     <p class="list-title">{{ this.title }}</p>
     <div class="row">
-      <div class="col-md-offset-3 col-md-6">
+      <div class="col-md-offset-2 col-md-8">
         <ul :class="listStyleClass">
           <li v-for="item in items">
             {{ item.value }}
+            <div class="pull-right listItem-actions">
+              <a href="#" @click="editItem(item)">
+                <i class="fa fa-pencil-square-o fa-lg text-info"></i>
+              </a>
+              <a href="#" @click="deleteItem(item)">
+                <i class="fa fa-trash-o fa-lg text-danger"></i>
+              </a>
+            </div>
           </li>
         </ul>
       </div>
@@ -52,7 +72,11 @@ export default {
       type: Boolean,
       default: true
     },
-    title: String
+    title: String,
+    onDeleteItem: {
+      type: Function,
+      default: () => {},
+    },
   },
   computed: {
     listStyleClass: function() {
@@ -60,6 +84,16 @@ export default {
         return 'pro-list';
       else
         return 'con-list';
+    }
+  },
+  methods: {
+    editItem: function(item) {
+      console.log("edit: ", item);
+    },
+    deleteItem: function(item) {
+      console.log("delete: ", item);
+
+      this.onDeleteItem(item);
     }
   }
 }

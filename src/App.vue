@@ -11,11 +11,11 @@
 
     <div class="row">
       <div class="col-xs-6" style="background-color:greenyellow">
-        <pro-con-list :items="pros" title="PROS" :is-pro-list="true"></pro-con-list>
+        <pro-con-list :items="pros" title="PROS" :isProList="true" :onDeleteItem="onDeleteItem"></pro-con-list>
       </div>
-      
+
       <div class="col-xs-6" style="background-color:gold">
-        <pro-con-list :items="cons" title="CONS" :is-pro-list="false"></pro-con-list>
+        <pro-con-list :items="cons" title="CONS" :isProList="false" :onDeleteItem="onDeleteItem"></pro-con-list>
       </div>
     </div>
   </div>
@@ -32,7 +32,14 @@ export default {
   data () {
     return {
       input: '',
-      items: [],
+      items: [
+        { pro:true, value:'pedro' },
+        { con:true, value:'dario' },
+        { pro:true, value:'xavier' },
+        { con:true, value:'juan' },
+        { pro:true, value:'talmas' },
+        { con:true, value:'mass' },
+      ],
     }
   },
   computed: {
@@ -44,7 +51,7 @@ export default {
     }
   },
   methods: {
-    processItem: function(event) {
+    processItem(event) {
       // check to see if it has one of our keys
       let indicator = this.input.trim().substring(0, 1);
 
@@ -69,6 +76,19 @@ export default {
       this.input = '';
     }
   },
+  onDeleteItem(item) {
+    console.log("in onDeleteItem");
+
+    let index = this.items.findIndex(a => {
+      return _.isEqual(a, item);
+    });
+
+    console.group();
+    console.log("item: ", item);
+    console.log("index: ", index);
+    console.log("items[index]: ", this.items[index]);
+    console.endGroup();
+  }
 }
 </script>
 
