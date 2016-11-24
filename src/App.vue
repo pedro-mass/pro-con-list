@@ -43,10 +43,10 @@ export default {
     }
   },
   computed: {
-    pros: function() {
+    pros() {
       return this.items.filter( item => item.pro === true);
     },
-    cons: function() {
+    cons() {
       return this.items.filter( item => item.con === true);
     }
   },
@@ -74,21 +74,17 @@ export default {
 
       // clear out the input
       this.input = '';
+    },
+    onDeleteItem: function(item) {
+      let index = this.items.findIndex(a => {
+        return _.isEqual(a, item);
+      });
+
+      if (index >= 0) {
+          this.items.splice(index, 1);
+      }
     }
   },
-  onDeleteItem(item) {
-    console.log("in onDeleteItem");
-
-    let index = this.items.findIndex(a => {
-      return _.isEqual(a, item);
-    });
-
-    console.group();
-    console.log("item: ", item);
-    console.log("index: ", index);
-    console.log("items[index]: ", this.items[index]);
-    console.endGroup();
-  }
 }
 </script>
 

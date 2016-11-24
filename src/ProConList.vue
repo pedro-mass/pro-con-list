@@ -75,7 +75,6 @@ export default {
     title: String,
     onDeleteItem: {
       type: Function,
-      default: () => {},
     },
   },
   computed: {
@@ -87,12 +86,10 @@ export default {
     }
   },
   methods: {
-    editItem: function(item) {
+    editItem(item) {
       console.log("edit: ", item);
     },
-    deleteItem: function(item) {
-      console.log("delete: ", item);
-
+    deleteItem(item) {
       this.onDeleteItem(item);
     }
   }
