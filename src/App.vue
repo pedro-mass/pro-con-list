@@ -46,6 +46,7 @@ export default {
         { pro:true, value:'talmas', isEditing: false },
         { pro:false, value:'mass', isEditing: false },
       ],
+      validIndicators: ['+', '-'],
     }
   },
   computed: {
@@ -63,7 +64,13 @@ export default {
 
       let item = {};
       item.pro = indicator === '+';
-      item.value = input.trim().substring(1).trim();
+
+      // check to see if we got a valid indicator
+      if (!_.includes(this.validIndicators, indicator)) {
+          item.value = input.trim();
+      } else {
+        item.value = input.trim().substring(1).trim();
+      }
 
       return item;
     },
