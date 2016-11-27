@@ -32,6 +32,10 @@
   .listItem-actions a:hover {
     font-size: 1.25rem;
   }
+
+  input.listItem-edit {
+    width:80%;
+  }
 </style>
 
 <template>
@@ -40,15 +44,28 @@
     <div class="row">
       <div class="col-md-offset-2 col-md-8">
         <ul :class="listStyleClass">
-          <li v-for="item in items">
-            {{ item.value }}
-            <div class="pull-right listItem-actions">
-              <a href="#" @click="editItem(item)">
-                <i class="fa fa-pencil-square-o fa-lg text-info"></i>
-              </a>
-              <a href="#" @click="deleteItem(item)">
-                <i class="fa fa-trash-o fa-lg text-danger"></i>
-              </a>
+          <li v-for="item in items" :class="{'listItem-edit': item.isEditing}">
+            <span v-show="!item.isEditing">
+              {{ item.value }}
+              <div class="pull-right listItem-actions">
+                <a href="#" @click="editItem(item)">
+                  <i class="fa fa-pencil-square-o fa-lg text-info"></i>
+                </a>
+                <a href="#" @click="deleteItem(item)">
+                  <i class="fa fa-trash-o fa-lg text-danger"></i>
+                </a>
+              </div>
+            </span>
+            <span v-show="item.isEditing">
+              <input class="listItem-edit" v-model="item.editText" @keyup.enter="saveEdit(item)"></input>
+              <div class="pull-right listItem-actions">
+                <a href="#" @click="saveEdit(item)">
+                  <i class="fa fa-floppy-o fa-lg text-success"></i>
+                </a>
+                <a href="#" @click="cancelEdit(item)">
+                  <i class="fa fa-ban fa-lg text-danger"></i>
+                </a>
+              </div>
             </div>
           </li>
         </ul>
@@ -76,6 +93,9 @@ export default {
     onDeleteItem: {
       type: Function,
     },
+    onEditItem: {
+      type: Function,
+    },
   },
   computed: {
     listStyleClass: function() {
@@ -87,7 +107,20 @@ export default {
   },
   methods: {
     editItem(item) {
-      console.log("edit: ", item);
+      if (item.pro) {
+        item.editText = "+ ";
+      } else {
+        item.editText = "- ";
+      }
+
+      item.editText += item.value;
+      item.isEditing = true;
+    },
+    cancelEdit(item) {
+      item.isEditing = false;
+    },
+    saveEdit(item) {
+      this.onEditItem(item);
     },
     deleteItem(item) {
       this.onDeleteItem(item);

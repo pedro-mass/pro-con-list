@@ -1,3 +1,9 @@
+<style scoped>
+  #app {
+    background-color: lightblue;
+  }
+</style>
+
 <template>
   <div id="app" class="container-fluid procon-list">
     <h1 class="text-center">Pro/Con List</h1>
@@ -11,11 +17,11 @@
 
     <div class="row">
       <div class="col-xs-6" style="background-color:greenyellow">
-        <pro-con-list :items="pros" title="PROS" :isProList="true" :onDeleteItem="onDeleteItem"></pro-con-list>
+        <pro-con-list :items="pros" title="PROS" :isProList="true" :onDeleteItem="onDeleteItem" :onEditItem="onEditItem"></pro-con-list>
       </div>
 
       <div class="col-xs-6" style="background-color:gold">
-        <pro-con-list :items="cons" title="CONS" :isProList="false" :onDeleteItem="onDeleteItem"></pro-con-list>
+        <pro-con-list :items="cons" title="CONS" :isProList="false" :onDeleteItem="onDeleteItem" :onEditItem="onEditItem"></pro-con-list>
       </div>
     </div>
   </div>
@@ -33,12 +39,12 @@ export default {
     return {
       input: '',
       items: [
-        { pro:true, value:'pedro' },
-        { con:true, value:'dario' },
-        { pro:true, value:'xavier' },
-        { con:true, value:'juan' },
-        { pro:true, value:'talmas' },
-        { con:true, value:'mass' },
+        { pro:true, value:'pedro', isEditing: false },
+        { pro:false, value:'dario', isEditing: false },
+        { pro:true, value:'xavier', isEditing: false },
+        { pro:false, value:'juan', isEditing: false },
+        { pro:true, value:'talmas', isEditing: false },
+        { pro:false, value:'mass', isEditing: false },
       ],
     }
   },
@@ -47,35 +53,29 @@ export default {
       return this.items.filter( item => item.pro === true);
     },
     cons() {
-      return this.items.filter( item => item.con === true);
+      return this.items.filter( item => item.pro != true);
     }
   },
   methods: {
-    processItem(event) {
+    processInput(input) {
       // check to see if it has one of our keys
-      let indicator = this.input.trim().substring(0, 1);
+      let indicator = input.trim().substring(0, 1);
 
       let item = {};
+      item.pro = indicator === '+';
+      item.value = input.trim().substring(1).trim();
 
-      switch (indicator) {
-        case "+":
-          item.pro = true;
-          break;
-        case "-":
-          item.con = true;
-          break;
-        default:
-          return;
-      }
+      return item;
+    },
+    processItem(event) {
+      let newItem = this.processInput(this.input);
 
-      item.value = this.input.trim().substring(1).trim();
-
-      this.items.push(item);
+      this.items.push(newItem);
 
       // clear out the input
       this.input = '';
     },
-    onDeleteItem: function(item) {
+    onDeleteItem(item) {
       let index = this.items.findIndex(a => {
         return _.isEqual(a, item);
       });
@@ -83,13 +83,19 @@ export default {
       if (index >= 0) {
           this.items.splice(index, 1);
       }
+    },
+    onEditItem(item) {
+      // handle the editText
+      let editItem = this.processInput(item.editText);
+
+      // update the object text
+      _.assignIn(item, editItem);
+      item.isEditing = false;
+      item.editText = '';
+
+      // return the result
+      return item;
     }
   },
 }
 </script>
-
-<style scoped>
-  #app {
-    background-color: lightblue;
-  }
-</style>

@@ -16,8 +16,7 @@ npm run build
 ```
 
 ## Todo
-- delete item
-- modify item
+- modify item styling
 - move item
 - persist the data
 - login
