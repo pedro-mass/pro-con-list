@@ -72,6 +72,9 @@ export default {
         item.value = input.trim().substring(1).trim();
       }
 
+      // needed to have Vue be able to swap into edit mode
+      item.isEditing = false;
+
       return item;
     },
     processItem(event) {
