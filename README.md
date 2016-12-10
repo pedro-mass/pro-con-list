@@ -21,6 +21,9 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 - ~~make pro/con list as stand-alone component~~
 - ~~move all the crud operation outside of the component~~
 - persist the data
+  - ~~load the data~~
+  - delete the data
+  - edit the data
 - login
 - multiple pro/con lists on page
 

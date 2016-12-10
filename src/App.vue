@@ -13,23 +13,21 @@
 </template>
 
 <script>
-import ProConList from './ProConList/ProConList.vue'
+import ProConList from './ProConList/ProConList.vue';
+
+import firebaseApp from './firebaseApp.js'
 
 export default {
   name: 'app',
   components: {
     ProConList,
   },
+  firebase: {
+    items: firebaseApp.database().ref('items'),
+
+  },
   data () {
     return {
-      items: [
-        { pro:true, value:'pedro', isEditing: false },
-        { pro:false, value:'dario', isEditing: false },
-        { pro:true, value:'xavier', isEditing: false },
-        { pro:false, value:'juan', isEditing: false },
-        { pro:true, value:'talmas', isEditing: false },
-        { pro:false, value:'mass', isEditing: false },
-      ],
       validIndicators: {
         pro: '+',
         con: '-'
@@ -37,12 +35,13 @@ export default {
     }
   },
   methods: {
-    // TODO: add methods for ADD, EDIT, DELETE
-    // pass those methods down to the pro-con list
     onAddItem(inputString) {
       let newItem = this.processInput(inputString);
 
-      this.items.push(newItem);
+      console.log(this.$firebaseRefs);
+
+      this.$firebaseRefs.items.push(newItem)
+      // this.items.push(newItem);
     },
     processInput(input) {
       // check to see if it has one of our keys
