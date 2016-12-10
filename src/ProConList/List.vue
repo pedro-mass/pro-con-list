@@ -76,7 +76,7 @@
 
 <script>
 export default {
-  name: 'proConList',
+  name: 'list',
   props: {
     items: {
       type: Array,

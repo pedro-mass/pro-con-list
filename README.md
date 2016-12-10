@@ -18,8 +18,12 @@ npm run build
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ## Todo
-- modify item styling
-- move item
+- ~~make pro/con list as stand-alone component~~
+- ~~move all the crud operation outside of the component~~
 - persist the data
 - login
-- multiple lists
+- multiple pro/con lists on page
+
+### Nice to Haves
+- modify item styling
+- move item
