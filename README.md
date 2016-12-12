@@ -27,6 +27,7 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
   - ~~edit the data~~
 - login
 - multiple pro/con lists on page
+- deploy
 
 ### Nice to Haves
 - modify item styling
