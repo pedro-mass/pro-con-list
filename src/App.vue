@@ -6,8 +6,6 @@
 
 <template>
   <div id="app" class="container-fluid">
-    <pre>{{items}}</pre>
-
     <pro-con-list title="Pro/Con List" :items="items"
       :onAddItem="onAddItem" :onEditItem="onEditItem" :onDeleteItem="onDeleteItem">
     </pro-con-list>
