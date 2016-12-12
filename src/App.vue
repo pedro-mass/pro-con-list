@@ -6,7 +6,7 @@
 
 <template>
   <div id="app" class="container-fluid">
-    <!-- <pre>{{items}}</pre> -->
+    <pre>{{items}}</pre>
 
     <pro-con-list title="Pro/Con List" :items="items"
       :onAddItem="onAddItem" :onEditItem="onEditItem" :onDeleteItem="onDeleteItem">
@@ -68,10 +68,18 @@ export default {
       // update the object text
       _.assignIn(item, editItem);
       item.isEditing = false;
-      item.editText = undefined;
+      delete item.editText;
 
-      // update the db
-      this.$firebaseRefs.items.child(item['.key']).set(item);
+      //--- update the db ---//
+      // save the key
+      let key = item['.key'];
+      delete item['.key'];
+
+      // update using the key
+      this.$firebaseRefs.items.child(key).set(item);
+
+      // put the key back on for further updates
+      item['.key'] = key;
 
       // return the result
       return item;

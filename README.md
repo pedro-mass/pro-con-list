@@ -20,11 +20,11 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 ## Todo
 - ~~make pro/con list as stand-alone component~~
 - ~~move all the crud operation outside of the component~~
-- persist the data
+- ~~persist the data~~
   - ~~load the data~~
   - ~~delete the data~~
   - ~~add data~~
-  - edit the data
+  - ~~edit the data~~
 - login
 - multiple pro/con lists on page
 
