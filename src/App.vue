@@ -6,6 +6,8 @@
 
 <template>
   <div id="app" class="container-fluid">
+    <!-- <pre>{{items}}</pre> -->
+
     <pro-con-list title="Pro/Con List" :items="items"
       :onAddItem="onAddItem" :onEditItem="onEditItem" :onDeleteItem="onDeleteItem">
     </pro-con-list>
@@ -38,10 +40,7 @@ export default {
     onAddItem(inputString) {
       let newItem = this.processInput(inputString);
 
-      console.log(this.$firebaseRefs);
-
       this.$firebaseRefs.items.push(newItem)
-      // this.items.push(newItem);
     },
     processInput(input) {
       // check to see if it has one of our keys
@@ -69,19 +68,18 @@ export default {
       // update the object text
       _.assignIn(item, editItem);
       item.isEditing = false;
-      item.editText = '';
+      item.editText = undefined;
+
+      // update the db
+      this.$firebaseRefs.items.child(item['.key']).set(item);
 
       // return the result
       return item;
+
     },
     onDeleteItem(item) {
-      let index = this.items.findIndex(a => {
-        return _.isEqual(a, item);
-      });
-
-      if (index >= 0) {
-          this.items.splice(index, 1);
-      }
+      // update db
+      this.$firebaseRefs.items.child(item['.key']).remove();
     },
   },
 }
