@@ -27,7 +27,8 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
   - ~~edit the data~~
 - routing
   - ~~add basic routing~~
-  - add a default catch all route
+  - ~~add a default catch all route~~
+  - have the data load on route change (https://router.vuejs.org/en/advanced/data-fetching.html)
 - login
 - multiple pro/con lists on page
 

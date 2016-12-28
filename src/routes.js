@@ -6,9 +6,15 @@ const routes = [
       path: '/',
       name: 'home',
       component: App
-  }, {
+  },
+  {
       path: '/pedro',
       component: Pedro
+  },
+
+  {
+    path: '*',
+    redirect: { name: 'home' }
   }
 ]
 
