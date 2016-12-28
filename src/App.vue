@@ -14,7 +14,6 @@
 
 <script>
 import ProConList from './ProConList/ProConList.vue';
-
 import firebaseApp from './firebaseApp.js'
 
 export default {
@@ -24,7 +23,6 @@ export default {
   },
   firebase: {
     items: firebaseApp.database().ref('items'),
-
   },
   data () {
     return {

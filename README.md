@@ -25,6 +25,9 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
   - ~~delete the data~~
   - ~~add data~~
   - ~~edit the data~~
+- ~~routing~~
+  - ~~add basic routing~~
+  - ~~add a default catch all route~~
 - login
 - multiple pro/con lists on page
 - deploy
