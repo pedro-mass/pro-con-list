@@ -29,8 +29,8 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
   - ~~add basic routing~~
   - ~~add a default catch all route~~
 - login
-- multiple pro/con lists on page
 - deploy
+- multiple pro/con lists on page
 
 ### Nice to Haves
 - modify item styling
