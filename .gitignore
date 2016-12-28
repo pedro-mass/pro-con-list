@@ -2,4 +2,4 @@
 node_modules/
 dist/
 npm-debug.log
-src/firebase_config.js
+src/db/firebase_config.js

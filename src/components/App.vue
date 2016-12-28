@@ -14,7 +14,7 @@
 
 <script>
 import ProConList from './ProConList/ProConList.vue';
-import firebaseApp from './firebaseApp.js'
+import firebaseApp from '../db/firebaseApp.js'
 
 export default {
   name: 'app',

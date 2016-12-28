@@ -1,5 +1,5 @@
-import App from './App.vue'
-import Pedro from './Pedro.vue'
+import App from '../components/App.vue'
+import Pedro from '../components/Pedro.vue'
 
 const routes = [
   {

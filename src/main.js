@@ -5,7 +5,7 @@ import VueFire from 'vuefire'
 Vue.use(VueFire)
 
 import VueRouter from 'vue-router'
-import routes from './routes.js'
+import routes from './config/routes.js'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
