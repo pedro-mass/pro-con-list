@@ -1,6 +1,6 @@
 {
   "name": "pro-con-list",
-  "description": "A Vue.js project",
+  "description": "A Vue.js project using the vue-cli webpack-simple scaffold",
   "author": "Pedro Mass <pedro.j.mass@gmail.com>",
   "private": true,
   "scripts": {
