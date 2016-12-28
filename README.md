@@ -25,10 +25,9 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
   - ~~delete the data~~
   - ~~add data~~
   - ~~edit the data~~
-- routing
+- ~~routing~~
   - ~~add basic routing~~
   - ~~add a default catch all route~~
-  - have the data load on route change (https://router.vuejs.org/en/advanced/data-fetching.html)
 - login
 - multiple pro/con lists on page
 
