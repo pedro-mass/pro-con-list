@@ -1,6 +1,6 @@
 # pro-con-list
 
-> A Vue.js project using the vue-cli webpack-simple scaffold
+> A Vue.js project using the [vue-cli](https://github.com/vuejs/vue-cli) [webpack-simple](https://github.com/vuejs-templates/webpack-simple) scaffold
 
 ## Build Setup
 
