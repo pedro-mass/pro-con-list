@@ -6,8 +6,6 @@
 
 <template>
   <div id="app" class="container-fluid">
-    <pre>{{items}}</pre>
-
     <pro-con-list title="Pro/Con List" :items="items"
       :onAddItem="onAddItem" :onEditItem="onEditItem" :onDeleteItem="onDeleteItem">
     </pro-con-list>
@@ -16,7 +14,6 @@
 
 <script>
 import ProConList from './ProConList/ProConList.vue';
-
 import firebaseApp from './firebaseApp.js'
 
 export default {
@@ -26,7 +23,6 @@ export default {
   },
   firebase: {
     items: firebaseApp.database().ref('items'),
-
   },
   data () {
     return {
