@@ -24,7 +24,7 @@ export default {
   firebase: {
     items: firebaseApp.database().ref('items'),
   },
-  data () {
+  data() {
     return {
       validIndicators: {
         pro: '+',
