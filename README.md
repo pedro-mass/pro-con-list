@@ -29,7 +29,14 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
   - ~~add basic routing~~
   - ~~add a default catch all route~~
 - login
+  - get anonymous auth working
+  - pull data from this user
+  - get email auth working
+  - offer merge of data from anonymous auth
 - deploy
+- login v2
+  - offer login via other providers
+  - merge user data (if logged in with email before, add Facebook/Google to the same user)
 - multiple pro/con lists on page
 
 ### Nice to Haves
