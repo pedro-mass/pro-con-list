@@ -16,6 +16,8 @@
 
   #authLinks a.router-link-active {
     color: black;
+    pointer-events: none;
+    cursor: default;
   }
 </style>
 
