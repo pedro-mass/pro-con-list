@@ -1,7 +1,8 @@
 export default {
     store: {
         state: {
-            count: 25
+            count: 25,
+            user: {}
         },
         mutations: {
             increment(state) {

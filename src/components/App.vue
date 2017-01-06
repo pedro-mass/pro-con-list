@@ -17,7 +17,6 @@ import firebaseApp from '../db/firebaseApp.js'
 import AuthLinks from './layout/AuthLinks.vue'
 
 // get the current user
-
 export default {
   name: 'app',
   components: {

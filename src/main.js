@@ -19,6 +19,14 @@ const router = new VueRouter({
   routes: routes.routes
 })
 
+// Might be able to use the logic here to check authentication
+router.beforeEach((to, from, next) => {
+  console.log("beforeEach - state.count: ", store.state.count)
+  console.log("beforeEach - state.user: ", store.state.user)
+
+  next();
+})
+
 new Vue({
   store,
   router
