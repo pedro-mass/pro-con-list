@@ -1,11 +1,10 @@
 <style scoped>
-  #app {
-    background-color: lightblue;
-  }
 </style>
 
 <template>
   <div id="app" class="container-fluid">
+    <auth-links></auth-links>
+
     <pro-con-list title="Pro/Con List" :items="items"
       :onAddItem="onAddItem" :onEditItem="onEditItem" :onDeleteItem="onDeleteItem">
     </pro-con-list>
@@ -13,13 +12,15 @@
 </template>
 
 <script>
-import ProConList from './ProConList/ProConList.vue';
+import ProConList from './ProConList/ProConList.vue'
 import firebaseApp from '../db/firebaseApp.js'
+import AuthLinks from './layout/AuthLinks.vue'
 
 export default {
   name: 'app',
   components: {
     ProConList,
+    AuthLinks
   },
   firebase: {
     items: firebaseApp.database().ref('items'),
@@ -32,6 +33,7 @@ export default {
       },
     }
   },
+  created() {},
   methods: {
     onAddItem(inputString) {
       let newItem = this.processInput(inputString);
