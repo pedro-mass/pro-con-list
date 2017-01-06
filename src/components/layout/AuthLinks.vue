@@ -12,6 +12,11 @@
   #authLinks a {
     color: inherit;
   }
+
+
+  #authLinks a.router-link-active {
+    color: black;
+  }
 </style>
 
 <template>
