@@ -13,7 +13,6 @@
     color: inherit;
   }
 
-
   #authLinks a.router-link-active {
     color: black;
     pointer-events: none;
