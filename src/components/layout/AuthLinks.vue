@@ -22,7 +22,7 @@
 <template>
   <div id="authLinks">
     <router-link to="/auth">Login/Signup</router-link>
-    | <router-link to="/auth">Profile</router-link>
+    | <router-link to="/profile">Profile</router-link>
   </div>
 </template>
 
