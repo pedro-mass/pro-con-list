@@ -22,6 +22,8 @@ export default {
     return {}
   },
   created() {
+    console.log("state.count: ", this.$store.state.count)
+
     // FirebaseUI config.
       // var uiConfig = {
       //   signInSuccessUrl: '/pedro',

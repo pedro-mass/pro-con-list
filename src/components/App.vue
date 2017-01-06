@@ -16,6 +16,8 @@ import ProConList from './ProConList/ProConList.vue'
 import firebaseApp from '../db/firebaseApp.js'
 import AuthLinks from './layout/AuthLinks.vue'
 
+// get the current user
+
 export default {
   name: 'app',
   components: {
@@ -33,7 +35,9 @@ export default {
       },
     }
   },
-  created() {},
+  created() {
+    console.log("state.count: ", this.$store.state.count)
+  },
   methods: {
     onAddItem(inputString) {
       let newItem = this.processInput(inputString);
